@@ -73,7 +73,7 @@ d = 100  # Dimensionality of R^d
 
 # Generate random data
 X = torch.rand(n, d)
-Y = torch.tensor([f4(x) for x in X])
+Y = torch.tensor([f4(x) for x in X])  #we can choose our function 
 grads = torch.stack([gradf(x,f4) for x in X])
 hessians = torch.stack([hessianf(x,f4) for x in X])
 
@@ -216,7 +216,7 @@ kwargs = {'alpha': 100.0,
         'batch_args':{'batch_size':N},
         'check_f_dims':False}
 
-epsilon1,epsilon2=1,1
+epsilon1,epsilon2=1,1  #we can choose the values of the espilons
 f = objective_hessian(train_loader, N, device, model, pprop,epsilon1,epsilon2)
 resampling =  rsmp.resampling([rsmp.loss_update_resampling(M=1, wait_thresh=40)], 1)
 noise = anisotropic_noise(norm = norm_torch, sampler = normal_torch(device))
