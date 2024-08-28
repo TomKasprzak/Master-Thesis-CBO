@@ -132,10 +132,10 @@ d = 100 # Dimensionality of R^d
 
 # Generate random data
 X = torch.rand(n, d,requires_grad = True)
-Y = torch.tensor([f4(x) for x in X])
-grads = torch.stack([gradf(x,f4) for x in X])
+Y = torch.tensor([f4(x) for x in X])  #we can choose f1, f2, f3 or f4
+grads = torch.stack([gradf(x,f4) for x in X])  #of course we have the same function here
 
-# Optionally, split into training and validation sets
+# split into training and validation sets
 split_ratio = 0.8
 split_index = int(n * split_ratio)
 X_train, X_val = X[:split_index], X[split_index:]
@@ -207,7 +207,7 @@ model_class=Perceptron
 from util import flatten_parameters, get_param_properties,eval_losses, eval_model,norm_torch, compute_consensus_torch, normal_torch, effective_sample_size
 from torch.func import vmap
 
-N = 100
+N = 100  # the number of particles that we can choose
 nodes = 100
 
 models = [model_class(sizes=[d,nodes,1]) for _ in range(N)] # one hidden layer only
@@ -273,7 +273,7 @@ class objective_grads:
 """
 Let's use the CBX library to find the parameters of the neural network
 """
-
+#hyperparameters 
 kwargs = {'alpha': 100.0,
         'dt': 0.1,
         'sigma': 0.1,
