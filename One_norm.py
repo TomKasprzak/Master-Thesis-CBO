@@ -70,7 +70,7 @@ d = 500 # Dimensionality of R^d
 
 # Generate random data
 X = torch.rand(n, d,requires_grad = True)
-Y = torch.tensor([f4(x) for x in X])
+Y = torch.tensor([f4(x) for x in X])   #we can choose our function
 grads = torch.stack([gradf(x,f4) for x in X])
 
 # Optionally, split into training and validation sets
